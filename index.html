@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html>
-<body style="background-color:powderblue;">
+<head>
+  <meta charset="UTF-8">
+  <title>Dagens data</title>
+</head>
+<body>
+  <h1>Dagens data</h1>
+  <pre id="data">Laddar...</pre>
 
-<h1>This is a heading</h1>
-<p>This is a paragraph.</p>
-
+  <script>
+    fetch("data.json")
+      .then(r => r.json())
+      .then(obj => {
+        document.getElementById("data").textContent =
+          JSON.stringify(obj, null, 2);
+      })
+      .catch(err => {
+        document.getElementById("data").textContent =
+          "Kunde inte ladda data: " + err;
+      });
+  </script>
 </body>
 </html>
