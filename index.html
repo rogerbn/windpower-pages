@@ -1,24 +1,19 @@
-<!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Dagens data</title>
+    <meta charset="utf-8">
+    <title>Status 2025-09-24</title>
 </head>
-<body>
-  <h1>Dagens data</h1>
-  <pre id="data">Laddar...</pre>
-
-  <script>
-    fetch("data.json")
-      .then(r => r.json())
-      .then(obj => {
-        document.getElementById("data").textContent =
-          JSON.stringify(obj, null, 2);
-      })
-      .catch(err => {
-        document.getElementById("data").textContent =
-          "Kunde inte ladda data: " + err;
-      });
-  </script>
+<body style="background-color:darkred; height:100vh; margin:0;
+             display:flex; align-items:center; justify-content:center;
+             font-family:sans-serif;">
+    <div style="text-align:center;">
+        <h1 style="font-size:3em; color:white; margin:0;">
+            DARKRED
+        </h1>
+        <p style="font-size:1.5em; color:white; margin:0;">
+            2025-09-24
+        </p>
+    </div>
 </body>
 </html>
