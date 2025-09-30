@@ -23,7 +23,7 @@ html_content = f"""
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Status {{date}}</title>
+  <title>Status {date}</title>
   <style>
     body {
       margin: 0;
@@ -32,8 +32,8 @@ html_content = f"""
       justify-content: center;
       align-items: center;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background-color: {{color}};
-      color: {{text_color}};
+      background-color: {color};
+      color: {text_color};
       text-align: center;
     }
     h1 {
@@ -48,8 +48,8 @@ html_content = f"""
 </head>
 <body>
   <div>
-    <h1>{{status}}</h1>
-    <p>{{date}}</p>
+    <h1>{status}</h1>
+    <p>{date}</p>
   </div>
 </body>
 </html>
