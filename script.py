@@ -13,6 +13,16 @@ with open(json_file) as f:
 
 color = data.get("status", "yellow")
 date = data.get("date", "unknown")
+sum_value = data.get("sum", 0)
+index_value = data.get("index", 1)  # Avoid division by zero
+
+# Compute difference and percentage
+diff = sum_value - index_value
+percent = (diff / index_value) * 100
+
+# Format nicely
+diff_text = f"{diff:+,.2f}"  # + shows sign
+percent_text = f"{percent:+.2f}%"
 
 # Decide text color based on background
 text_color = "white" if "dark" in color or color in ["red", "green"] else "black"
@@ -50,6 +60,7 @@ html_content = f"""
   <div>
     <h1>{color.upper()}</h1>
     <p>{date}</p>
+    <p>{percent_text} ({diff_text})</p>
   </div>
 </body>
 </html>
