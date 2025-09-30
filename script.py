@@ -25,7 +25,7 @@ html_content = f"""
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Status {date}</title>
   <style>
-    body {
+    body {{
       margin: 0;
       height: 100vh;
       display: flex;
@@ -35,15 +35,15 @@ html_content = f"""
       background-color: {color};
       color: {text_color};
       text-align: center;
-    }
-    h1 {
+    }}
+    h1 {{
       font-size: 12vw; /* scales with screen width */
       margin: 0;
-    }
-    p {
+    }}
+    p {{
       font-size: 6vw; /* smaller but still responsive */
       margin: 0;
-    }
+    }}
   </style>
 </head>
 <body>
