@@ -48,7 +48,7 @@ html_content = f"""
 </head>
 <body>
   <div>
-    <h1>{status}</h1>
+    <h1>{color.upper()}</h1>
     <p>{date}</p>
   </div>
 </body>
