@@ -18,22 +18,39 @@ date = data.get("date", "unknown")
 text_color = "white" if "dark" in color or color in ["red", "green"] else "black"
 
 html_content = f"""
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Status {date}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status {{date}}</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: {{color}};
+      color: {{text_color}};
+      text-align: center;
+    }
+    h1 {
+      font-size: 12vw; /* scales with screen width */
+      margin: 0;
+    }
+    p {
+      font-size: 6vw; /* smaller but still responsive */
+      margin: 0;
+    }
+  </style>
 </head>
-<body style="background-color:{color}; height:100vh; margin:0;
-             display:flex; align-items:center; justify-content:center;
-             font-family:sans-serif;">
-    <div style="text-align:center;">
-        <h1 style="font-size:3em; color:{text_color}; margin:0;">
-            {color.upper()}
-        </h1>
-        <p style="font-size:1.5em; color:{text_color}; margin:0;">
-            {date}
-        </p>
-    </div>
+<body>
+  <div>
+    <h1>{{status}}</h1>
+    <p>{{date}}</p>
+  </div>
 </body>
 </html>
 """
