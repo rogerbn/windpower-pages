@@ -4,6 +4,7 @@ import os
 # Input and output
 json_file = "data.json"
 html_file = "index.html"
+annual_sums_file = "annual_sums.json"
 
 if not os.path.exists(json_file):
     raise FileNotFoundError(f"{json_file} not found")
@@ -15,6 +16,23 @@ color = data.get("status", "yellow")
 date = data.get("date", "unknown")
 sum_value = data.get("sum", 0)
 index_value = data.get("index", 1)  # Avoid division by zero
+
+year = str(date)[:4]
+
+if not year.isdigit() or len(year) != 4:
+    raise ValueError(f"Could not determine a year from date: {date}")
+
+annual_sums = {}
+
+if os.path.exists(annual_sums_file):
+    with open(annual_sums_file, "r", encoding="utf-8") as f:
+        annual_sums = json.load(f)
+
+annual_sums[year] = annual_sums.get(year, 0) + float(sum_value)
+
+with open(annual_sums_file, "w", encoding="utf-8") as f:
+    json.dump(annual_sums, f, indent=2)
+    f.write("\n")
 
 # Compute difference and percentage
 diff = sum_value - index_value
