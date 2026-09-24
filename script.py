@@ -105,6 +105,7 @@ html_content = f"""
     <h1>{color.upper()}</h1>
     <p>{date}</p>
     <p>{percent_text} ({diff_text})</p>
+    <p>YTD: {ytd_text}</p>
   </div>
 </body>
 </html>
