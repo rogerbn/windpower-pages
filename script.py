@@ -35,6 +35,9 @@ with open(annual_sums_file, "w", encoding="utf-8") as f:
     json.dump(annual_sums, f, indent=2)
     f.write("\n")
 
+ytd_value = annual_sums[year]
+ytd_text = f"{ytd_value:,.2f}"
+
 if os.path.exists(history_file):
     with open(history_file, "r", encoding="utf-8") as f:
         history = json.load(f)
