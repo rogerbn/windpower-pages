@@ -5,6 +5,7 @@ import os
 json_file = "data.json"
 html_file = "index.html"
 annual_sums_file = "annual_sums.json"
+history_file = "sum_history.json"
 
 if not os.path.exists(json_file):
     raise FileNotFoundError(f"{json_file} not found")
@@ -32,6 +33,28 @@ annual_sums[year] = annual_sums.get(year, 0) + float(sum_value)
 
 with open(annual_sums_file, "w", encoding="utf-8") as f:
     json.dump(annual_sums, f, indent=2)
+    f.write("\n")
+
+if os.path.exists(history_file):
+    with open(history_file, "r", encoding="utf-8") as f:
+        history = json.load(f)
+else:
+    history = []
+
+record = {
+    "date": str(date),
+    "sum": float(sum_value)
+}
+
+# Avoid adding the same date repeatedly if the script is run again.
+history = [item for item in history if item.get("date") != record["date"]]
+history.append(record)
+
+# Optional: keep records ordered by date
+history.sort(key=lambda item: item["date"])
+
+with open(history_file, "w", encoding="utf-8") as f:
+    json.dump(history, f, indent=2)
     f.write("\n")
 
 # Compute difference and percentage
